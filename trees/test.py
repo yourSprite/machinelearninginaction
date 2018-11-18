@@ -1,11 +1,12 @@
 import trees
+import treePlotter
 from math import log
 
-dataSet = [[1, 1, 'yes'],
-               [1, 1, 'yes'],
-               [1, 0, 'no'],
-               [0, 1, 'no'],
-               [0, 1, 'no']]
+# dataSet = [[1, 1, 'yes'],
+#                [1, 1, 'yes'],
+#                [1, 0, 'no'],
+#                [0, 1, 'no'],
+#                [0, 1, 'no']]
 # numEntries = len(dataSet)
 # labelCounts = {}
 # # 取出标签并统计出现次数保存在字典中
@@ -54,5 +55,12 @@ dataSet = [[1, 1, 'yes'],
 # print(bestInfoGain)
 # print(bestFeature)
 
-dict = {'测试1':1, '测试2':2}
-print(type(dict.keys()))
+# dict = {'测试1':1, '测试2':2}
+# print(type(dict.keys()))
+
+fr = open('lenses.txt')
+lenses = [inst.strip().split('\t') for inst in fr.readlines()]
+lensesLabels = ['age', 'prescript', 'astigmatic', 'tearRate']
+lensesTree = trees.createTree(lenses, lensesLabels)
+# print(lensesTree)
+treePlotter.createPlot(lensesTree)
